@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK Club - Igniting Change, One Act at a Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --maroon: #8B2635;
+            --yellow: #FFD23F;
+            --cream: #FFF8E7;
+            --dark-text: #2C3E50;
+            --light-text: #7F8C8D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--orange) 100%);
+            padding: 0.5rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cream);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .nav-subtitle {
+            font-size: 0.9rem;
+            color: var(--yellow);
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 0.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--cream);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--maroon) 50%, var(--yellow) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="paint" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23paint)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--yellow);
+            margin-bottom: 2rem;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Brush Button */
+        .brush-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--yellow) 0%, var(--orange) 100%);
+            color: var(--maroon);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px 20px 50px 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .brush-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .brush-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .brush-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--maroon);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--yellow));
+            border-radius: 20px 5px 20px 5px;
+        }
+
+        /* Brush Cards */
+        .brush-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 30px 10px 30px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brush-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--yellow), var(--maroon));
+            border-radius: 20px 5px 0 0;
+        }
+
+        .brush-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card h3 {
+            color: var(--maroon);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mission-card p {
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+
+        /* Activities Section */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .activity-card h3 {
+            color: var(--maroon);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-date {
+            background: linear-gradient(135deg, var(--orange), var(--maroon));
+            color: var(--cream);
+            padding: 1rem;
+            border-radius: 20px 5px 0 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-content h3 {
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px 5px 20px 5px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--orange);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .member-photo:hover {
+            transform: scale(1.1);
+            border-color: var(--maroon);
+        }
+
+        .member-name {
+            color: var(--maroon);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--orange);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--maroon);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            border-radius: 15px 5px 15px 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.2);
+        }
+
+        .contact-info h3 {
+            color: var(--maroon);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--maroon), var(--orange));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--dark-text) 100%);
+            color: var(--cream);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--yellow);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .nav-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-subtitle {
+                font-size: 0.7rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--maroon);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .brush-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="images/spark.jpg" alt="SPARK Club Logo" class="nav-logo">
+                <div class="nav-text">
+                    <h1 class="nav-title">SPARK</h1>
+                    <p class="nav-subtitle">Serving People and Raising Kindness</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>SPARK</h1>
+            <p class="hero-tagline">Igniting Change, One Act at a Time</p>
+            <p class="hero-description">
+                Join us in creating positive change in our community through service, leadership, and compassion. 
+                Together, we can make a difference that lasts a lifetime.
+            </p>
+            <a href="#about" class="brush-btn">Discover Our Mission</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About SPARK</h2>
+            <div class="about-grid">
+                <div class="brush-card fade-in">
+                    <div class="mission-card">
+                        <h3>🎯 Our Mission</h3>
+                        <p>To empower students to become compassionate leaders who create positive change in their communities through meaningful service, advocacy, and social action. We believe that every small act of kindness can spark a movement of transformation.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="mission-card">
+                        <h3>👁️ Our Vision</h3>
+                        <p>A world where young people are equipped with the tools, passion, and platform to address social challenges and build stronger, more inclusive communities. We envision a future where service is not just an activity, but a way of life.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="mission-card">
+                        <h3>💫 Our Motto</h3>
+                        <p><strong>"Serving People and Raising Kindness"</strong> - This motto embodies our commitment to putting people first, fostering empathy, and creating ripple effects of positive change that extend far beyond our immediate community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Activities</h2>
+            <div class="activities-grid">
+                <div class="brush-card fade-in">
+                    <div class="activity-card">
+                        <span class="activity-icon">🏘️</span>
+                        <h3>Community Projects</h3>
+                        <p>We organize neighborhood clean-ups, food drives, and community garden initiatives. Our projects focus on addressing local needs while building stronger connections between community members and fostering environmental stewardship.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="activity-card">
+                        <span class="activity-icon">📢</span>
+                        <h3>Awareness Campaigns</h3>
+                        <p>Through creative campaigns, we raise awareness about important social issues including mental health, environmental conservation, and social justice. We use social media, campus events, and community partnerships to amplify our message.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="activity-card">
+                        <span class="activity-icon">🚐</span>
+                        <h3>Campus Drives</h3>
+                        <p>We coordinate blood donation drives, clothing collections, and school supply drives on campus. These initiatives connect our university community with broader social needs while making it easy for students to contribute meaningfully.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Upcoming Events</h2>
+            <div class="events-grid">
+                <div class="brush-card fade-in">
+                    <div class="event-date">
+                        <div style="font-size: 2rem; font-weight: bold;">15</div>
+                        <div>February 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Community Clean-Up Drive</h3>
+                        <p>Join us for our monthly community clean-up initiative at Riverside Park. We'll provide all supplies and refreshments. This is a great opportunity to meet fellow members while making a visible impact in our local environment.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="event-date">
+                        <div style="font-size: 2rem; font-weight: bold;">22</div>
+                        <div>February 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Mental Health Awareness Workshop</h3>
+                        <p>A comprehensive workshop featuring licensed counselors discussing stress management, peer support, and campus mental health resources. Open to all students with light refreshments provided.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="event-date">
+                        <div style="font-size: 2rem; font-weight: bold;">01</div>
+                        <div>March 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Annual Fundraising Gala</h3>
+                        <p>Our signature fundraising event featuring dinner, entertainment, and silent auction. Proceeds support our community projects and scholarship fund. Formal attire requested. Tickets available at the Student Center.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Community volunteers cleaning up local park">
+                    <div class="gallery-overlay">
+                        <h4>Community Clean-Up Day</h4>
+                        <p>Our volunteers made a huge impact at Riverside Park, collecting over 200 pounds of litter and planting new flowers.</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in fade-in-delay">
+                    <img src="https://images.pexels.com/photos/6646971/pexels-photo-6646971.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Students organizing food drive donations">
+                    <div class="gallery-overlay">
+                        <h4>Holiday Food Drive</h4>
+                        <p>Thanks to campus support, we collected 500+ food items for local families during the holiday season.</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.pexels.com/photos/6647112/pexels-photo-6647112.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Workshop session with students learning leadership skills">
+                    <div class="gallery-overlay">
+                        <h4>Leadership Workshop</h4>
+                        <p>Interactive leadership development session with guest speaker and hands-on team building activities.</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in fade-in-delay">
+                    <img src="https://images.pexels.com/photos/6646943/pexels-photo-6646943.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Blood donation drive with medical staff and volunteers">
+                    <div class="gallery-overlay">
+                        <h4>Blood Donation Drive</h4>
+                        <p>Our campus blood drive helped save lives with 75 successful donations from students and faculty.</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.pexels.com/photos/6647020/pexels-photo-6647020.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Team members at awareness campaign booth">
+                    <div class="gallery-overlay">
+                        <h4>Mental Health Awareness</h4>
+                        <p>Spreading awareness about mental health resources and breaking stigma through campus outreach.</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in fade-in-delay">
+                    <img src="https://images.pexels.com/photos/6647028/pexels-photo-6647028.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Annual gala dinner with members and community leaders">
+                    <div class="gallery-overlay">
+                        <h4>Annual Fundraising Gala</h4>
+                        <p>A memorable evening celebrating our achievements and raising funds for future community projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Team</h2>
+            <div class="team-grid">
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Sarah Johnson - Club President" class="member-photo">
+                        <h3 class="member-name">Sarah Johnson</h3>
+                        <p class="member-role">President</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Leading our mission with passion and dedication to community service</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Marcus Chen - Vice President" class="member-photo">
+                        <h3 class="member-name">Marcus Chen</h3>
+                        <p class="member-role">Vice President</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Coordinating projects and supporting our president's vision</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Emily Rodriguez - Secretary" class="member-photo">
+                        <h3 class="member-name">Emily Rodriguez</h3>
+                        <p class="member-role">Secretary</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Keeping our organization running smoothly with excellent communication</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300" alt="David Kim - Treasurer" class="member-photo">
+                        <h3 class="member-name">David Kim</h3>
+                        <p class="member-role">Treasurer</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Managing our resources to maximize impact in the community</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Jessica Brown - Events Coordinator" class="member-photo">
+                        <h3 class="member-name">Jessica Brown</h3>
+                        <p class="member-role">Events Coordinator</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Organizing memorable events that bring our community together</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="https://images.pexels.com/photos/3771110/pexels-photo-3771110.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Alex Thompson - Outreach Director" class="member-photo">
+                        <h3 class="member-name">Alex Thompson</h3>
+                        <p class="member-role">Outreach Director</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Building partnerships and expanding our community connections</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-grid">
+
+                <div class="contact-info fade-in fade-in-delay">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email:</strong><br>
+                            spark@pscmr.ac.in
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location:</strong><br>
+                            Student Center, Room 205<br>
+                            University Campus
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SPARK Club</h3>
+                    <p>Igniting Change, One Act at a Time</p>
+                    <p style="margin-top: 1rem; color: var(--cream);">
+                        Join us in creating positive change in our community through service, leadership, and compassion.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>University</h3>
+                    <p>State University</p>
+                    <p>Student Organizations Department</p>
+                    <p>123 University Ave</p>
+                    <p>College Town, ST 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--cream);">
+                        Follow us for updates on events, volunteer opportunities, and community impact stories.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SPARK Club - State University. All rights reserved. | Designed with ❤️ for community service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Simple scroll animation (CSS-based animations are already applied)
+        // This just adds a slight enhancement for better mobile performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

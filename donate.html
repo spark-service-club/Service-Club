@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Donate Now</title>
+<style>
+  body {
+    /* Remove flexbox properties from body */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
+
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #FFB74D;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2e2c2c; /* Assuming var(--maroon) is this color */
+    padding: 0.2rem 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-logo-small {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #FFA500; /* Assuming var(--orange) is this color */
+    transition: all 0.3s ease;
+  }
+
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff; /* Assuming var(--white) is this color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    line-height: 1;
+  }
+
+  .nav-subtitle {
+    font-size: 0.7rem;
+    color: #FFFF00; /* Assuming var(--yellow) is this color */
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 0.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .qr-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+    /* Center the QR container on the page */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .qr-code {
+    width: 200px;
+    height: 200px;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="P:\SPARK\logo.jpg" alt="SPARK Club Logo" class="nav-logo-small">
+        <div class="nav-text">
+          <h1 class="nav-title">SPARK</h1>
+          <p class="nav-subtitle">Serving People and Raising Kindness</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="service.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="qr-container">
+    <h1>Scan Me to Donate!</h1>
+    <img src="P:\SPARK\q.jpg" alt="QR Code" class="qr-code">
+  </div>
+</body>
+</html>

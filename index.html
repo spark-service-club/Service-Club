@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK Club - Igniting Change, One Act at a Time</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Updated color palette based on the logo */
+            --orange: #FF8C00;
+            /* A vibrant orange from the logo */
+            --maroon: #2C2C2C;
+            /* Re-purposed dark text color to be more prominent */
+            --yellow: #FFB74D;
+            /* A lighter shade of orange/yellow from the logo */
+            --cream: #F5F5F5;
+            /* A light, neutral background color */
+            --dark-text: #2C2C2C;
+            --light-text: #5A5A5A;
+            --white: #FFFFFF;
+            --logo-bg: #E68B4B;
+            /* The solid color from the logo's background */
+            --logo-gradient-start: #FF9B42;
+            --logo-gradient-end: #CC6600;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            background-color: var(--logo-bg);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation - Decreased Size with Logo */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--maroon);
+            padding: 0.2rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo-small {
+            width: 50px;
+            /* Smaller size for navbar */
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .nav-subtitle {
+            font-size: 0.7rem;
+            color: var(--yellow);
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 0.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            /* Added to vertically align items */
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* DONATE BUTTON STYLES */
+        .donate-btn a {
+            background: var(--orange);
+            color: var(--maroon);
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 2px solid var(--orange);
+        }
+
+        .donate-btn a:hover {
+            background: var(--maroon);
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* END DONATE BUTTON STYLES */
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--logo-gradient-start) 0%, var(--logo-gradient-end) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+            /* Add padding to account for the fixed navbar */
+            text-align: left;
+            /* Changed to left alignment for better layout with image */
+        }
+
+        .hero-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        /* Main logo styling */
+        .hero-logo {
+            width: 350px;
+            /* Increased size for prominence */
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInLogo 1s ease-out;
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Dotted pattern animation */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="paint" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23paint)"/></svg>');
+            animation: move-dots 15s linear infinite;
+        }
+
+        @keyframes move-dots {
+            from {
+                background-position: 0 0;
+                transform: scale(1);
+            }
+
+            50% {
+                background-position: 100px 50px;
+                transform: scale(1.1);
+            }
+
+            to {
+                background-position: 200px 100px;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--maroon);
+            margin-bottom: 2rem;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Brush Button */
+        .brush-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--maroon);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px 20px 50px 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .brush-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .brush-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .brush-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--maroon);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--yellow));
+            border-radius: 20px 5px 20px 5px;
+        }
+
+        /* Brush Cards */
+        .brush-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 30px 10px 30px 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brush-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--yellow), var(--maroon));
+            border-radius: 20px 5px 0 0;
+        }
+
+        .brush-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card h3 {
+            color: var(--maroon);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mission-card p {
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+
+        /* Activities Section */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .activity-card h3 {
+            color: var(--maroon);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-date {
+            background: var(--maroon);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 20px 5px 0 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-content h3 {
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px 5px 20px 5px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--orange);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .member-photo:hover {
+            transform: scale(1.1);
+            border-color: var(--maroon);
+        }
+
+        .member-name {
+            color: var(--maroon);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--orange);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--maroon);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            border-radius: 15px 5px 15px 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.2);
+        }
+
+        .contact-info h3 {
+            color: var(--maroon);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--maroon);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+    background: black; /* Changed to black */
+    color: var(--cream);
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: flex;          /* Use flexbox for side-by-side layout */
+    justify-content: space-between; /* Distribute space between items */
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;        /* Wrap items if screen is small */
+}
+
+.footer-section {
+    flex: 1 1 250px;        /* Flexible basis with min width of 250px */
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: var(--yellow);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+}
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-logo-small {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-subtitle {
+                font-size: 0.7rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--maroon);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero-content-wrapper {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            /* Responsive button styling for mobile */
+            .donate-btn a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo-small {
+                width: 35px;
+                height: 35px;
+            }
+
+            .nav-title {
+                font-size: 1.2rem;
+            }
+
+            .nav-subtitle {
+                font-size: 0.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .brush-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="P:\SPARK\logo.jpg" alt="SPARK Club Logo" class="nav-logo-small">
+                <div class="nav-text">
+                    <h1 class="nav-title">SPARK</h1>
+                    <p class="nav-subtitle">Serving People and Raising Kindness</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="donate-btn"><a href="donate.html">DonateNow</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="hero">
+        <div class="hero-content-wrapper">
+            <img src="P:\SPARK\logo.jpg" alt="SPARK Club Logo" class="hero-logo">
+            <div class="hero-content">
+                <h1>SPARK</h1>
+                <p class="hero-tagline">Igniting Change, One Act at a Time</p>
+                <p class="hero-description">
+                    Join us in creating positive change in our community through service, leadership, and compassion.
+                    Together, we can make a difference that lasts a lifetime.
+                </p>
+                <a href="#about" class="brush-btn">Discover Our Mission</a>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About SPARK</h2>
+            <div class="about-grid">
+                <div class="brush-card fade-in">
+                    <div class="mission-card">
+                        <h3>🎯 Our Mission</h3>
+                        <p>To empower students to become compassionate leaders who create positive change in their communities through meaningful service, advocacy, and social action. We believe that every small act of kindness can spark a movement of transformation.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="mission-card">
+                        <h3>👁 Our Vision</h3>
+                        <p>A world where young people are equipped with the tools, passion, and platform to address social challenges and build stronger, more inclusive communities. We envision a future where service is not just an activity, but a way of life.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="mission-card">
+                        <h3>💫 Our Motto</h3>
+                        <p><strong>"Serving People and Raising Kindness"</strong> - This motto embodies our commitment to putting people first, fostering empathy, and creating ripple effects of positive change that extend far beyond our immediate community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Activities</h2>
+            <div class="activities-grid">
+                <div class="brush-card fade-in">
+                    <div class="activity-card">
+                        <span class="activity-icon">🍰</span>
+                        <h3>Celebrate Your Birthday & Anniversary</h3>
+                        <p>Organize events like clean-ups, food drives, and gardening to build community and celebrate special days meaningfully.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="activity-card">
+                        <span class="activity-icon">🍌</span>
+                        <h3>Sponsor Food Packets</h3>
+                        <p>Support impactful campaigns by sponsoring food packets to raise awareness and help those in need.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="activity-card">
+                        <span class="activity-icon">💊</span>
+                        <h3>Donate to Support Free Medical Aid</h3>
+                        <p>Contribute to medical support by donating for free aid, helping connect students with vital community needs.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="activity-card">
+                        <span class="activity-icon">🌱</span>
+                        <h3>Sponsor Small Plants and Trees</h3>
+                        <p>Encourage eco-awareness by sponsoring tree and plant donations that promote environmental sustainability.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="activity-card">
+                        <span class="activity-icon">👕</span>
+                        <h3>Clothing Drive</h3>
+                        <p>Clothing and Donating clothing to those in need such as homeless shelters or individuals effected by domestic violence. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="events" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Upcoming Events</h2>
+            <div class="events-grid">
+                <div class="brush-card fade-in">
+                    <div class="event-date">
+                        <div style="font-size: 2rem; font-weight: bold;">14</div>
+                        <div>August 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Inauguration Day</h3>
+                        <p>We're excited to inaugurate our Service Club with a meaningful gesture—donating food packets to those in need. As part of the launch, we’re also unveiling our official website and club logo to kickstart our journey of service and impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Gallery</h2>
+        </div>
+    </section>
+
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Team</h2>
+            <div class="team-grid">
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="P:\SPARK\a.jpg" alt="Sarah Johnson - Club President" class="member-photo">
+                        <h3 class="member-name">N Abhishek</h3>
+                        <p class="member-role">President</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Inspiring leadership through vision and action</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="P:\SPARK\n.jpg" alt="Marcus Chen - Vice President" class="member-photo">
+                        <h3 class="member-name"> T Nokesh Kumar</h3>
+                        <p class="member-role">Vice President</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Driving teamwork with dedication and purpose.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="P:\SPARK\s.jpg" alt="Emily Rodriguez - Secretary" class="member-photo">
+                        <h3 class="member-name">G Sravanthi</h3>
+                        <p class="member-role">Secretary</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Mastering communication and coordination.</p>
+                    </div>
+                </div>
+
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="P:\SPARK\t.jpg" alt="David Kim - Treasurer" class="member-photo">
+                        <h3 class="member-name">M Teja Amrutha</h3>
+                        <p class="member-role">Treasurer</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Securing funds for greater impact</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in">
+                    <div class="team-member">
+                        <img src="P:\SPARK\p.jpg" alt="Jessica Brown - Events Coordinator" class="member-photo">
+                        <h3 class="member-name">V Pranavi</h3>
+                        <p class="member-role">Member</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Creating events that connect and inspire.</p>
+                    </div>
+                </div>
+                <div class="brush-card fade-in fade-in-delay">
+                    <div class="team-member">
+                        <img src="P:\SPARK\k.jpg" alt="Alex Thompson - Outreach Director" class="member-photo">
+                        <h3 class="member-name">K Karthik</h3>
+                        <p class="member-role">Member</p>
+                        <p style="margin-top: 0.5rem; color: var(--light-text);">Building bridges beyond the club</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in fade-in-delay">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email:</strong><br>
+                            spark@pscmr.ac.in
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            +91 93927 98493
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location:</strong><br>
+                            PSCMRCET ,Room No:314<br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SPARK Club</h3>
+                    <p>Igniting Change, One Act at a Time</p>
+                    <p style="margin-top: 1rem; color: var(--cream);">
+                        Join us in creating positive change in our community through service, leadership, and compassion.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>University</h3>
+                    <p>PSCMRCET</p>
+                    <p>Department of CSE(AIML)</p>
+                    <p>Kothapeta, Vijayawada</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/serve_with_spark?igsh=MXJzZXcxMXI1Zmc1ag==" 
+                    class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:spark@pscmr.ac.in" class="social-link">&#9993;</a>
+                </div>
+                    <p style="margin-top: 1rem; color: var(--cream);">
+                        Follow us for updates on events, and community impact stories.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SPARK Club - State University. All rights reserved. | Designed with ❤ for community service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Simple scroll animation (CSS-based animations are already applied)
+        // This just adds a slight enhancement for better mobile performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
